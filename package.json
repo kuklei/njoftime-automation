@@ -1,0 +1,29 @@
+{
+  "name": "njoftime-automation",
+  "version": "1.0.0",
+  "description": "Increases post rank in listings by posting the post as an update",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuklei/njoftime-automation.git"
+  },
+  "keywords": [
+    "njoftime.com;",
+    "automation"
+  ],
+  "author": "kuklei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuklei/njoftime-automation/issues"
+  },
+  "homepage": "https://github.com/kuklei/njoftime-automation#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  }
+}
