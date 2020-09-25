@@ -1,4 +1,6 @@
 const request = require('request');
+// var request = request.defaults({ jar: true }); //cookies activation
+
 const cheerio = require('cheerio');
 let token = 1;
 const getToken = (cb) => {  //request is async so we pass a callback funtion that will be called when the call is finished.
@@ -31,16 +33,18 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
 };
  request(options, function (error, response) {
     if (error) throw new Error(error);
-    const $ = cheerio.load(response.body);
-    const text = $.html(); // TODO there might be multiple script tags
-    
-    // find variable `x` in the text
-    const X = text.match(/var SECURITYTOKEN = "(.*)";/);
-    //console.log($("script").text()); // "Hello world"
+    // const $ = cheerio.load(response.body);
+    // const text = $.html(); // TODO there might be multiple script tags
     // console.log(response.body);
-  // console.log(X[1]);
-  // return X[1];
-   cb(X[1]); //call is fishied so call the callback function with the value of the call
+    // find variable `x` in the text
+   const token = response.body.match(/var SECURITYTOKEN = "(.*)";/);
+   // console.log(X[1]);
+
+   console.log(response.headers['set-cookie'].toString());
+   const cookie = response.headers['set-cookie'].toString();
+   const sesionHash = cookie.match(/vb_sessionhash=(.*?);/);
+   const lastVisit = cookie.match(/vb_lastvisit=(.*?);/);
+   cb(token[1], sesionHash[1], lastVisit[1]); //call is fishied so call the callback function with the value of the call
  });
 };
 
