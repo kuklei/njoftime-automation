@@ -1,8 +1,9 @@
-const request = require('request');
-// var request = request.defaults({ jar: true }); //cookies activation
+var request = require('request');
+var request = request.defaults({ jar: true }); //cookies activation
 
-const cheerio = require('cheerio');
-let token = 1;
+// const cheerio = require('cheerio');
+// let token = 1;
+
 const getToken = (cb) => {  //request is async so we pass a callback funtion that will be called when the call is finished.
   var options = {
   'method': 'POST',
@@ -15,8 +16,7 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
     'Origin': 'http://www.njoftime.com',
     'DNT': '1',
     'Connection': 'keep-alive',
-    'Referer': 'http://www.njoftime.com/forum.php',
-    'Cookie': 'vbulletin_collapse=; __auc=ce92736f174a0be9c971518072b; __asc=9d1cf8ef174bf1943d0606e2836; vb_sessionhash=30df6a4c8eaa211cca3967310ed3f93f; vb_lastvisit=1600934429; vb_lastactivity=0; vb_lastactivity=0; vb_lastvisit=1600934429; vb_sessionhash=b7ff9974d36a2ded2834067e44de9d83',
+    'Referer': 'http://www.njoftime.com',
     'Upgrade-Insecure-Requests': '1'
   },
   form: {
