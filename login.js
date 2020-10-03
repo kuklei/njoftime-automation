@@ -1,5 +1,6 @@
 var request = require('request');
 var request = request.defaults({ jar: true, followAllRedirects: true }); //cookies activation
+require('dotenv').config();
 // const cheerio = require('cheerio');
 // let token = 1;
 
@@ -44,7 +45,7 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
       //  const sesionHash = cookie.match(/vb_sessionhash=(.*?);/);
       //  const lastVisit = cookie.match(/vb_lastvisit=(.*?);/);
       //  cb(token[1], sesionHash[1], lastVisit[1]); //call is fishied so call the callback function with the value of the call
-      cb(token[1]);
+      // cb(token[1]);
 
       var backEnd = {
         'method': 'POST',
@@ -161,26 +162,29 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
       };
 
       let terminate = false; //loop terminator if error occurs
+      let timeout = process.env.timeoutSec || 30;
+      let iterations = process.env.iterations || 2;
       (function myLoop(i) {
         setTimeout(function () {
-          console.log(`running ${i}: ${new Date().toTimeString()}`); 
+          var time = new Date().toTimeString();
+          console.log(`running ${i}: ${time}`); 
           request(backEnd, function (error, response) {
             if (error) throw new Error(error);
             // console.log('1' + response.body);
             // console.log(op);
             // console.log(response);
             token = response.body.match(/var SECURITYTOKEN = "(.*)";/);
-            console.log(`token received: ${token[1]}`);
+            console.log(`token updated: ${token[1]}`);
             var test = response.body.match(/security token was missing/);
             if (test) {
               console.log('Post was not updated. Aborting');
               terminate = true;          }
             // cb(token[1]);
           }); // end request
-          console.log(i);
+          // console.log(i);
           if (--i && !terminate) myLoop(i);   //  decrement i and call myLoop again if i > 0
-        }, 30000) // end setTimeout
-      })(3); 
+        }, timeout * 1000) // end setTimeout
+      })(iterations); 
       
     });
   });
