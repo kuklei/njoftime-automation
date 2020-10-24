@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/kuklei/njoftime-automation#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "request": "^2.88.2"
+    "dotenv": "8.2.0",
+    "node-cron": "2.0.3",
+    "request": "2.88.2"
   }
 }

@@ -161,6 +161,122 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
         }
       };
 
+      var frontEnd = {
+        'method': 'POST',
+        'url': 'http://www.njoftime.com/editpost.php?do=updatepost&p=430277',
+        'headers': {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0',
+          'Accept': 'text/html,application/xhtml xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.5',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Origin': 'http://www.njoftime.com',
+          'DNT': '1',
+          'Connection': 'keep-alive',
+          'Referer': 'http://www.njoftime.com/editpost.php?p=430277&do=editpost',
+          'Cookie': 'vbulletin_collapse=; __auc=ce92736f174a0be9c971518072b; vb_lastvisit=1601370399; vb_lastactivity=0; _ga=GA1.2.1849594368.1602598823; __hstc=206502540.8f684cc22e270d8cda59bdc7964be89c.1602598823678.1602598823678.1602598823678.1; hubspotutk=8f684cc22e270d8cda59bdc7964be89c; messagesUtk=6a5f040102714c87b46e22cba90a332b; vb_sessionhash=19c1d323fb4d41b8b4e59616554acd49; vb_thread_lastview=df4cbfd70c9042268aeb219a015e69af73a7f9fca-7-%7Bi-296145_i-1601451144_i-430108_i-1601887959_i-344604_i-1601726375_i-493736_i-1601729893_i-403052_i-1601882946_i-373710_i-1602072861_i-430115_i-1603552151_%7D; __hssrc=1; __asc=4627fb711755b2958af72ea8e91; vb_lastvisit=1601656049; vb_lastactivity=0',
+          'Upgrade-Insecure-Requests': '1'
+        },
+        form: {
+          'title': 'Tirane, ofroj vend pune zhvillues / programues / developer FRONT-END Web Apps ne Angular',
+          'thread_fields_admin[]': '',
+          'fields[2]': 'Shqiperi',
+          'fields[3]': 'Tirane',
+          'fields[9]': '10220',
+          'fields[1]': '1',
+          'fields[7]': '20',
+          'fields[8]': '20',
+          'fields[5]': '2',
+          'fields[4]': 'mund edhe ta lini bosh',
+          'thread_fields_admin[4]': '4',
+          'thread_fields_admin[10]': 'Euro',
+          'message_backup': `[U]Kompania: [/U][B]IVA Elektronik[/B]
+      \n
+      \n[U]Pozicioni i punes: [/U][B]Front-end WEB Developer[/B]
+      \n
+      \nPershkrimi i vendit te punes
+      \n
+      \nZhvillimi i Single Page Web Applications (SPA) ne Angluar, Bootstrap dhe Javascript. Te kete njohurite dhe aftesite te kombinoje UI Design me programimin dhe konsumimin e web serviceve.Te kete rol aktiv ne menyren si implementohet dizenjimi me pjesen teknike.Te percaktoj dhe te kuptoje si duhet te shfaqet aplikacioni sipas kerkesave se perdoruesve.Te optimizoje me eficence te plote te gjitha nderfaqet e aplikacioneve.
+      \nKerkohet te punoj ne ekip se bashku me zhvilluesit back-end, per tu siguruar qe te gjithe elementet e krijimit te aplikacioneve jane te qendrueshme dhe sipas kerkesave.
+      \n
+      \nDetyra dhe pergjegjesi:
+      \n
+      \n
+      \n
+      \n[LIST]
+      \n[*]Te realizoj teknikisht dizenjimin e UI/UX. 
+      \n[*]Te percaktoj strukturen dhe dizenjimin e nderfaqeve te aplikacioneve. 
+      \n[*]Te tregoj performance ne optimizim e aplikacionit. 
+      \n[*]Te siguroj qe te gjitha inputet e perdoruesve te jene te vlefshme perpara se ti dergohen back-end. 
+      \n[*]Te optimizoje nderfaqet e aplikacioneve te jene sa me modulare,fleksibel dhe scalable. 
+      \n[/LIST]
+      \n
+      \nKerkesat dhe kualifikimet:
+      \n
+      \n
+      \n
+      \n[LIST]
+      \n[*]Te kete njohuri ne Angular, Javascript, Bootstrap, CSS. 
+      \n[*]Te jete i afte te mesoj shpejt rreth teknologjive me te reja. 
+      \n[*]Te shkruaj kod te testueshm, te qarte dhe te paster. 
+      \n[*]Te kete experience me konsumimin e RESTful web services. 
+      \n[*]Te kete experience ne zhvillimin e aplikacioneve te cilet menaxhojne intesitet te dhenash. 
+      \n[*]Te kete experience ne optimizim e kodit SPA Javasript. 
+      \n[*]Te kuptoj server-side CSS. 
+      \n[*]Te jete i afte te punoj individualisht por edhe ne grup. 
+      \n[*]Te zoteroj mire gjuhen Angleze. Gjuhet e tjera perbejne avantazh. 
+      \n[/LIST]
+      \n
+      \nReference ne linkedIN [URL]https://www.linkedin.com/company/18721717/[/URL]
+      \nReference web: [URL="http://www.ivaelektronik.com/"]www.ivaelektronik.com[/URL]
+      \n[B]Kontakt: [/B][B][EMAIL="hr@ivaelektronik.com"]hr@ivaelektronik.com[/EMAIL][/B]`,
+          'message': `<u>Kompania: </u><strong>IVA Elektronik</strong><br>
+      \n<br>
+      \n<u>Pozicioni i punes: </u><strong>Front-end WEB Developer</strong><br>
+      \n<br>
+      \nPershkrimi i vendit te punes<br>
+      \n<br>
+      \nZhvillimi i Single Page Web Applications (SPA) ne Angluar, Bootstrap dhe Javascript. Te kete njohurite dhe aftesite te kombinoje UI Design me programimin dhe konsumimin e web serviceve.Te kete rol aktiv ne menyren si implementohet dizenjimi me pjesen teknike.Te percaktoj dhe te kuptoje si duhet te shfaqet aplikacioni sipas kerkesave se perdoruesve.Te optimizoje me eficence te plote te gjitha nderfaqet e aplikacioneve.<br>
+      \nKerkohet te punoj ne ekip se bashku me zhvilluesit back-end, per tu siguruar qe te gjithe elementet e krijimit te aplikacioneve jane te qendrueshme dhe sipas kerkesave.<br>
+      \n<br>
+      \nDetyra dhe pergjegjesi:<br>
+      \n<br>
+      \n<br>
+      \n<ul><li style="">Te realizoj teknikisht dizenjimin e UI/UX.</li>
+      \n<li style="">Te percaktoj strukturen dhe dizenjimin e nderfaqeve te aplikacioneve.</li>
+      \n<li style="">Te tregoj performance ne optimizim e aplikacionit.</li>
+      \n<li style="">Te siguroj qe te gjitha inputet e perdoruesve te jene te vlefshme perpara se ti dergohen back-end.</li>
+      \n<li style="">Te optimizoje nderfaqet e aplikacioneve te jene sa me modulare,fleksibel dhe scalable.</li>
+      \n</ul><br>
+      \nKerkesat dhe kualifikimet:<br>
+      \n<br>
+      \n<br>
+      \n<ul><li style="">Te kete njohuri ne Angular, Javascript, Bootstrap, CSS.</li>
+      \n<li style="">Te jete i afte te mesoj shpejt rreth teknologjive me te reja.</li>
+      \n<li style="">Te shkruaj kod te testueshm, te qarte dhe te paster.</li>
+      \n<li style="">Te kete experience me konsumimin e RESTful web services.</li>
+      \n<li style="">Te kete experience ne zhvillimin e aplikacioneve te cilet menaxhojne intesitet te dhenash.</li>
+      \n<li style="">Te kete experience ne optimizim e kodit SPA Javasript.</li>
+      \n<li style="">Te kuptoj server-side CSS.</li>
+      \n<li style="">Te jete i afte te punoj individualisht por edhe ne grup.</li>
+      \n<li style="">Te zoteroj mire gjuhen Angleze. Gjuhet e tjera perbejne avantazh.</li>
+      \n</ul><br>
+      \nReference ne linkedIN <a href="https://www.linkedin.com/company/18721717/" target="_blank">https://www.linkedin.com/company/18721717/</a><br>
+      \nReference web: <a href="http://www.ivaelektronik.com/" target="_blank">www.ivaelektronik.com</a><br>
+      \n<strong>Kontakt: </strong><strong><a href="mailto:hr@ivaelektronik.com">hr@ivaelektronik.com</a></strong>`,
+          'wysiwyg': '1',
+          'sbutton': 'publiko/aktualizo!',
+          'signature': '1',
+          'parseurl': '1',
+          'emailupdate': '0',
+          's': '',
+          'securitytoken': `${token[1]}`,
+          'do': 'updatepost',
+          'p': '430277',
+          'posthash': 'dda5d29ea03a4671a811f6e66ca32f3d',
+          'poststarttime': '1603552267'
+        }
+      };
+
       let terminate = false; //loop terminator if error occurs
       let timeout = process.env.timeoutSec || 30;
       let iterations = process.env.iterations || 2;
@@ -178,9 +294,17 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
             var test = response.body.match(/security token was missing/);
             if (test) {
               console.log('Post was not updated. Aborting');
-              terminate = true;          }
+              terminate = true;
+            }
+
             // cb(token[1]);
           }); // end request
+
+          //if backend is successful shoot also front end
+          request(frontEnd, (error, response) => {
+            if (error) throw new Error(`Error when updating frontEnd: ${error}`);
+            console.log('Updating fronEnd');
+          });
           // console.log(i);
           if (--i && !terminate) myLoop(i);   //  decrement i and call myLoop again if i > 0
         }, timeout * 1000) // end setTimeout
