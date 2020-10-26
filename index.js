@@ -1,8 +1,14 @@
-const getToken = require('./login')
+const updatePosts = require('./login')
 
-getToken(function (token, sesionHash, lastVisit) {
-    console.log(token);
-    console.log(sesionHash);
-    console.log(lastVisit);
+var cron = require('node-cron');
+ 
+cron.schedule('* * * * *', () => {
+    console.log('running every 1 mins');
+    updatePosts((token) => {
+        // console.log(token);
+        // console.log(sesionHash);
+        // console.log(lastVisit);
+    }
+    );
 }
 );
