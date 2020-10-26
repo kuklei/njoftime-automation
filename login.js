@@ -4,7 +4,7 @@ require('dotenv').config();
 // const cheerio = require('cheerio');
 // let token = 1;
 
-const getToken = (cb) => {  //request is async so we pass a callback funtion that will be called when the call is finished.
+const updatePosts = (cb) => {  //request is async so we pass a callback funtion that will be called when the call is finished.
   var login = {
     'method': 'POST',
     'url': 'http://www.njoftime.com/login.php?do=login',
@@ -31,7 +31,7 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
       'vb_login_md5password_utf': 'e10adc3949ba59abbe56e057f20f883e'
     }
   };
-  request(login, function () { //double function here is to ensure that cookies are set or otherwise we dont always get a login token (not sure why)
+  request(login, function () { //double function here is to ensure that cookies are set or otherwise we dont always get a login token (first request simply sets cookies)
     request(login, function (error, response) {
       if (error) throw new Error(error);
       // console.log(response.body);
@@ -165,7 +165,7 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
         'method': 'POST',
         'url': 'http://www.njoftime.com/editpost.php?do=updatepost&p=430277',
         'headers': {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0',
           'Accept': 'text/html,application/xhtml xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
           'Accept-Language': 'en-US,en;q=0.5',
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -173,8 +173,8 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
           'DNT': '1',
           'Connection': 'keep-alive',
           'Referer': 'http://www.njoftime.com/editpost.php?p=430277&do=editpost',
-          'Cookie': 'vbulletin_collapse=; __auc=ce92736f174a0be9c971518072b; vb_lastvisit=1601370399; vb_lastactivity=0; _ga=GA1.2.1849594368.1602598823; __hstc=206502540.8f684cc22e270d8cda59bdc7964be89c.1602598823678.1602598823678.1602598823678.1; hubspotutk=8f684cc22e270d8cda59bdc7964be89c; messagesUtk=6a5f040102714c87b46e22cba90a332b; vb_sessionhash=19c1d323fb4d41b8b4e59616554acd49; vb_thread_lastview=df4cbfd70c9042268aeb219a015e69af73a7f9fca-7-%7Bi-296145_i-1601451144_i-430108_i-1601887959_i-344604_i-1601726375_i-493736_i-1601729893_i-403052_i-1601882946_i-373710_i-1602072861_i-430115_i-1603552151_%7D; __hssrc=1; __asc=4627fb711755b2958af72ea8e91; vb_lastvisit=1601656049; vb_lastactivity=0',
-          'Upgrade-Insecure-Requests': '1'
+          'Upgrade-Insecure-Requests': '1',
+          'Pragma': 'no-cache'
         },
         form: {
           'title': 'Tirane, ofroj vend pune zhvillues / programues / developer FRONT-END Web Apps ne Angular',
@@ -281,30 +281,35 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
       let timeout = process.env.timeoutSec || 30;
       let iterations = process.env.iterations || 2;
       (function myLoop(i) {
-        setTimeout(function () {
+        setTimeout(function () { //calls the function after the specified timeout
           var time = new Date().toTimeString();
           console.log(`running ${i}: ${time}`); 
           request(backEnd, function (error, response) {
-            if (error) throw new Error(error);
+            if (error) throw new Error(`Error when updating backEnd: ${error}`);
             // console.log('1' + response.body);
             // console.log(op);
             // console.log(response);
-            token = response.body.match(/var SECURITYTOKEN = "(.*)";/);
+            token = response.body.match(/var SECURITYTOKEN = "(.*)";/); //reset token here so login does not expire
             console.log(`token updated: ${token[1]}`);
             var test = response.body.match(/security token was missing/);
             if (test) {
-              console.log('Post was not updated. Aborting');
+              console.log('backend was not updated. Aborting');
               terminate = true;
             }
-
-            // cb(token[1]);
-          }); // end request
 
           //if backend is successful shoot also front end
           request(frontEnd, (error, response) => {
             if (error) throw new Error(`Error when updating frontEnd: ${error}`);
-            console.log('Updating fronEnd');
+            //console.log('Updating fronEnd');
+            //console.log(response.body);
+            var test = response.body.match(/security token was missing/);
+            if (test) {
+              console.log('frontend was not updated. Aborting');
+              terminate = true;
+            }
           });
+            // cb(token[1]);
+          }); // end request
           // console.log(i);
           if (--i && !terminate) myLoop(i);   //  decrement i and call myLoop again if i > 0
         }, timeout * 1000) // end setTimeout
@@ -314,4 +319,4 @@ const getToken = (cb) => {  //request is async so we pass a callback funtion tha
   });
 };
 
-module.exports = getToken;
+module.exports = updatePosts;
